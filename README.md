@@ -1,7 +1,19 @@
-#Components for web apps (not web components) - a template
+#FileUploadClient Component
 
-This is a component template aimed at compatibility and support without shims and polyfills. Sorry, no fanciness here!
+This component handles just the upload part for building applications like a client-side image editor, audio manager, etc. It provides a simple upload callback:
 
-- Bower for package management
-- Jasmine for testing
-- AMD/CommonJS support
+```
+  var c = new FileUploadClientComponent({
+    attachTo: $('#container'),
+    events: {
+      onUpload: function(files){
+        console.log('files are', files);
+      }
+    }
+  });
+```
+
+You can also customize the following via options:
+
+- headingText
+- allowMultiple (set to true to allow multiple file upload)
