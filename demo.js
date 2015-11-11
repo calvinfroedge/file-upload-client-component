@@ -7,6 +7,7 @@ requirejs.config({
 define(["main"], function(FileUploadClientComponent){
   var c = new FileUploadClientComponent({
     attachTo: $('#container'),
+		allowMultiple: true,
     events: {
       onUpload: function(files){
         console.log('files are', files);

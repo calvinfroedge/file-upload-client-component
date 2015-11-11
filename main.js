@@ -38,26 +38,38 @@
         return word + ( (multiple) ? 's' : '');
       }
 
+			/*
+			 * Handle single file upload
+			 */
+			var handleSingle = function(file, cb){
+      	var reader = new FileReader();
+        reader.onload = function(e) {
+          file.src = e.target.result;
+					cb(file);
+        }
+        reader.readAsDataURL(file);
+			}
+
       /*
        * Handle files on finish
        */
       var handleUpload = function(files){
-        var expectedCallbacks = files.length;
-        var completedCallbacks = 0;
         var uploads = [];
+				var i = 0;
+				
+				var handle = function(){
+					handleSingle(files[i], function(file){
+						++i;
+						uploads.push(file);
+						if(i < files.length){
+							handle();
+						} else {
+							if(opts.events.onUpload) opts.events.onUpload(uploads);
+						}
+					});
+				}
 
-        for(var i=0;i<files.length;i++){
-          var reader = new FileReader();
-          var file = files[i];
-          reader.onload = function(e) {
-            completedCallbacks += 1;
-            file.src = e.target.result;
-            if(completedCallbacks == expectedCallbacks){
-              if(opts.events.onUpload) opts.events.onUpload(files);
-            }
-          }
-          reader.readAsDataURL(files[i]);
-        }
+				handle();
       }
 
       /*
