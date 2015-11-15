@@ -1,0 +1,29 @@
+{
+  "name": "file-upload-client-component",
+  "version": "0.0.3",
+  "description": "A simple API for handling file uploads",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calvinfroedge/file-upload-client-component.git"
+  },
+  "keywords": [
+    "file",
+    "uploads",
+    "browser",
+    "only",
+    "file",
+    "upload",
+    "client",
+    "upload"
+  ],
+  "author": "Calvin Froedge <calvinfroedge@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calvinfroedge/file-upload-client-component/issues"
+  },
+  "homepage": "https://github.com/calvinfroedge/file-upload-client-component#readme"
+}
